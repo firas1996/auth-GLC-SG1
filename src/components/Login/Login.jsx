@@ -4,6 +4,7 @@ import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
 import Button from "../UI/Button/Button";
 import AuthContext from "../../store/contextStore";
+import axios from "axios";
 const emailReducer = (prevState, actions) => {
   switch (actions.name) {
     case "el user 9a3ed yekteb":
@@ -35,6 +36,13 @@ const Login = () => {
   // const [emailIsValid, setEmailIsValid] = useState();
   // const [enteredPassword, setEnteredPassword] = useState("");
   // const [passwordIsValid, setPasswordIsValid] = useState();
+  const testLogin = async (email, password) => {
+    const res = await axios.post("http://10.33.2.3:7777/users/login", {
+      email,
+      password,
+    });
+    console.log(res);
+  };
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -97,7 +105,7 @@ const Login = () => {
   const { loginHandler } = useContext(AuthContext);
   const submitHandler = (event) => {
     event.preventDefault();
-    loginHandler(emailState.value, passwordState.value);
+    testLogin(emailState.value, passwordState.value);
   };
 
   return (
