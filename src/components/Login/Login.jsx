@@ -105,6 +105,7 @@ const Login = () => {
   const { loginHandler } = useContext(AuthContext);
   const submitHandler = (event) => {
     event.preventDefault();
+    loginHandler(emailState.value, passwordState.value);
     testLogin(emailState.value, passwordState.value);
   };
 
