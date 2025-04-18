@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import AuthContext from "../../store/contextStore";
 import classes from "./Navigation.module.css";
+import AuthContext from "../../store/contextStore";
 
 const Navigation = () => {
   const { isLoggedIn, logoutHandler } = useContext(AuthContext);
