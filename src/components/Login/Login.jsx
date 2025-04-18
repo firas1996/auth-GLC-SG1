@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -30,7 +30,7 @@ const passwordReducer = (prevState, actions) => {
       return { value: "", isValid: null };
   }
 };
-const Login = (props) => {
+const Login = () => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
   // const [enteredPassword, setEnteredPassword] = useState("");
@@ -94,10 +94,10 @@ const Login = (props) => {
     // setPasswordIsValid(enteredPassword.trim().length > 6);
     dispatchPassword({ name: "onBlur" });
   };
-
+  const { loginHandler } = useContext(AuthContext);
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onLogin(emailState.value, passwordState.value);
+    loginHandler(emailState.value, passwordState.value);
   };
 
   return (
